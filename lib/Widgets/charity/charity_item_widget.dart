@@ -1,0 +1,128 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
+
+import '../../Utils/colors.dart';
+
+Widget charityItemWidget(BuildContext context) {
+  return InkWell(
+    onTap: () {
+      //navigatePush(context,  CharityDetailScreen());
+    },
+    child: Container(
+      margin: EdgeInsets.symmetric(
+        vertical: 10,
+        horizontal: MediaQuery.of(context).size.width * 0.06,
+      ),
+      width: MediaQuery.of(context).size.width,
+      //height: MediaQuery.of(context).size.height * 0.59,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        color: kWhite,
+      ),
+      padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.036),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Stack(
+            alignment: Alignment.topRight,
+            children: [
+              Container(
+                height: MediaQuery.of(context).size.height * 0.25,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: Image.asset(
+                    'assets/icons/check.png',
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 6, vertical: 8),
+                child: const CircleAvatar(
+                  radius: 15,
+                  backgroundImage: AssetImage("assets/images/Icon.png"),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.025,
+          ),
+          Text(
+            "Donate to help build schools in mali",
+            style: GoogleFonts.montserrat(
+                textStyle:
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.03,
+          ),
+          LinearPercentIndicator(
+            padding: EdgeInsets.only(
+                right: MediaQuery.of(context).size.width * 0.03),
+            width: MediaQuery.of(context).size.width * 0.8,
+            animation: true,
+            curve: Curves.bounceInOut,
+            barRadius: const Radius.circular(2),
+            lineHeight: 8,
+            percent: 0.3,
+            progressColor: kBrightYellow,
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.01,
+          ),
+          Container(
+            padding: EdgeInsets.only(
+              right: MediaQuery.of(context).size.width * 0.03,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("Raised", style: GoogleFonts.montserrat()),
+                Text("20%", style: GoogleFonts.montserrat()),
+              ],
+            ),
+          ),
+          const SizedBox(height: 15),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              const CircleAvatar(
+                radius: 25,
+                backgroundImage: AssetImage("assets/icons/check.png"),
+              ),
+              const SizedBox(width: 12),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "John William",
+                    style: GoogleFonts.montserrat(
+                        textStyle: TextStyle(
+                            color: kBlack,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14)),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    "San Diego, CA",
+                    style: GoogleFonts.montserrat(
+                        textStyle: TextStyle(color: kGrey, fontSize: 12)),
+                  ),
+                ],
+              )
+            ],
+          )
+        ],
+      ),
+    ),
+  );
+}
